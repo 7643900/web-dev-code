@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+<style>
+:root {--bg:#f9f9f9;--text:#333;--card:#fff;}
+body.dark {--bg:#121212;--text:#fff;--card:#1e1e1e;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:sans-serif;}
+.dashboard{display:grid;grid-template-columns:200px 1fr;min-height:100vh;}
+.sidebar{background:var(--card);padding:20px;}
+.sidebar ul{list-style:none;padding:0;}
+.sidebar li{padding:10px;cursor:pointer;}
+.sidebar li.active,.sidebar li:hover{background:#4c8bf5;color:#fff;}
+header{display:flex;justify-content:space-between;padding:10px;background:var(--card);}
+header button{padding:8px;border:none;background:#4c8bf5;color:#fff;border-radius:5px;cursor:pointer;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;padding:10px;}
+.card{background:var(--card);padding:20px;border-radius:8px;text-align:center;}
+table{width:100%;border-collapse:collapse;margin:10px;}
+th,td{padding:8px;border-bottom:1px solid #ccc;}
+@media(max-width:768px){.dashboard{grid-template-columns:1fr;}}
+</style>
+</head>
+<body class="light">
+<div class="dashboard">
+  <aside class="sidebar">
+    <h2>MyAdmin</h2>
+    <ul>
+      <li class="active">Dashboard</li>
+      <li>Analytics</li>
+      <li>Users</li>
+      <li>Settings</li>
+    </ul>
+  </aside>
+  <main>
+    <header>
+      <h1>Dashboard</h1>
+      <button id="theme-toggle">🌙</button>
+    </header>
+    <section class="cards">
+      <div class="card">Users: 5234</div>
+      <div class="card">Revenue: $12k</div>
+      <div class="card">Orders: 1024</div>
+      <div class="card">Feedback: 324</div>
+    </section>
+    <section>
+      <h2 style="padding:10px;">Recent Transactions</h2>
+      <table>
+        <tr><th>User</th><th>Amount</th><th>Status</th></tr>
+        <tr><td>Alice</td><td>$250</td><td>Completed</td></tr>
+        <tr><td>Bob</td><td>$120</td><td>Pending</td></tr>
+        <tr><td>Charlie</td><td>$560</td><td>Completed</td></tr>
+      </table>
+    </section>
+  </main>
+</div>
+<script>
+document.getElementById('theme-toggle').onclick = () => {
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-toggle').textContent =
+    document.body.classList.contains('dark') ? '☀️' : '🌙';
+};
+</script>
+</body>
+</html>
